@@ -161,9 +161,9 @@ namespace CertKeyProviderPlugin
                 // fall back on opening a local file
                 // FUTURE ENHANCEMENT: allow user to enter a URL and name/pwd as well
 
-                OpenFileDialog ofd = UIUtil.CreateOpenFileDialog(Res.str(Res.STR_OPEN_KEY_FILE),
+                OpenFileDialog ofd = (OpenFileDialog)UIUtil.CreateOpenFileDialog(Res.str(Res.STR_OPEN_KEY_FILE),
                     UIUtil.CreateFileTypeFilter(CertProtKeyFileExtension, Res.str(Res.STR_CERT_PROT_KEY_FILE), true),
-                    1, CertProtKeyFileExtension, false /* multi-select */, true);
+                    1, CertProtKeyFileExtension, false /* multi-select */, string.Empty).FileDialog;
 
                 if (ofd.ShowDialog() != DialogResult.OK)
                 {
@@ -215,10 +215,10 @@ namespace CertKeyProviderPlugin
             MessageBox.Show(Res.str(Res.STR_ENC_KEY_INTRO), Res.str(Res.STR_APP_TITLE), 
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            SaveFileDialog sfd = UIUtil.CreateSaveFileDialog(Res.str(Res.STR_CREATE_KEY_FILE),
+            SaveFileDialog sfd = (SaveFileDialog)UIUtil.CreateSaveFileDialog(Res.str(Res.STR_CREATE_KEY_FILE),
 			    UrlUtil.StripExtension(UrlUtil.GetFileName(strPath)) + "." +
 			    CertProtKeyFileExtension, UIUtil.CreateFileTypeFilter(CertProtKeyFileExtension,
-                Res.str(Res.STR_CERT_PROT_KEY_FILE), true), 1, CertProtKeyFileExtension, true);
+                Res.str(Res.STR_CERT_PROT_KEY_FILE), true), 1, CertProtKeyFileExtension, string.Empty).FileDialog;
 
 		    if(sfd.ShowDialog() != DialogResult.OK)
 		    {
